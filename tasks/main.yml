@@ -10,6 +10,18 @@
     msg: "newrelic_appname has not been defined"
   when: newrelic_appname|default(False) == False
   tags: [newrelic-php]
+  
+- name: Check for PHP-FPM
+  command: "apachectl -M"
+  changed_when: false
+  always_run: true
+  register: _apache_modules
+  sudo: true
+
+- name: Set fact for PHP-FPM
+  set_fact:
+     php_fpm_loaded: true
+  when: _apache_modules.stdout.find('php5-fpm') != -1
 
 - include: trusty.yml
   when: ansible_distribution_release == 'trusty'

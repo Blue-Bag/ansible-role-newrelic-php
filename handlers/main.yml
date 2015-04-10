@@ -2,6 +2,7 @@
 - name: Restart PHP-FPM
   service: name=php5-fpm state=restarted
   ignore_errors: yes
+  when: php_fpm_loaded
 
 - name: Restart Apache HTTP server
   service: name=apache2 state=restarted
