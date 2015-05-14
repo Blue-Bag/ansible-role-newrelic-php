@@ -10,7 +10,7 @@
     msg: "newrelic_appname has not been defined"
   when: newrelic_appname|default(False) == False
   tags: [newrelic-php]
-  
+
 - name: Check for PHP-FPM
   command: "apachectl -M"
   changed_when: false
