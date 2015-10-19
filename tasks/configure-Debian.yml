@@ -1,7 +1,4 @@
 ---
-- name: Set newrelic_loaded_os_family
-  set_fact:
-    newrelic_loaded_os_family: "{{ ansible_os_family }}"
 
 - name: Install New Relic PHP Agent
   apt:

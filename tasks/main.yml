@@ -1,4 +1,20 @@
 ---
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Default | Check for unsupported target operating system
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported"
+  when: supported_os_family|default(False) == False
+
+
+- name: Default | Check for unsupported target operating system
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported"
+  when: supported_os_family|default(False) == False
+
+
 - name: Check for newrelic_license_key
   fail:
     msg: "newrelic_license_key has not been defined"
@@ -23,13 +39,7 @@
      php_fpm_loaded: true
   when: _apache_modules.stdout.find('php5-fpm') != -1
 
-- include: trusty.yml
-  when: ansible_distribution_release == 'trusty'
+- include: configure-Debian.yml
+  when: ansible_os_family == 'Debian'
   tags: [newrelic-php]
-
-- include: default.yml
-  when: newrelic_loaded_os_family|default(False) == False
-  tags: [newrelic-php]
-
-
 
