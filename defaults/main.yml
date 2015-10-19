@@ -5,3 +5,5 @@ newrelic_license_key: ~
 # Application name (required)
 newrelic_appname: "{{ ansible_hostname }} PHP"
 
+php_fpm_loaded: false
+
