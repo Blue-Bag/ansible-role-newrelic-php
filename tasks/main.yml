@@ -32,7 +32,7 @@
   changed_when: false
   always_run: true
   register: _apache_modules
-  sudo: true
+  become: true
 
 - name: Set fact for PHP-FPM
   set_fact:

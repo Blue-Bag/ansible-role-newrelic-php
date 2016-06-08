@@ -5,12 +5,12 @@
     pkg: newrelic-php5
     state: latest
   register: newrelic_php5_installed
-  sudo: true
+  become: true
 
 - name: Run New Relic Installer
   shell: NR_INSTALL_SILENT=true newrelic-install install
   when: newrelic_php5_installed.changed
-  sudo: true
+  become: true
 
 - name: Remove default New Relic configuration
   file:
@@ -20,7 +20,7 @@
     - apache2
     - cli
   when: newrelic_php5_installed.changed
-  sudo: true
+  become: true
 
 - name: Configure Relic PHP Agent
   template:
@@ -29,7 +29,7 @@
     group: root
     owner: root
     mode: 0640
-  sudo: true
+  become: true
   notify:
     - Restart PHP-FPM
     - Restart Apache HTTP server
@@ -37,7 +37,7 @@
 - name: Enable the New Relic extension
   shell: php5enmod -s ALL newrelic creates=/etc/php5/cli/conf.d/20-newrelic.ini
   when: newrelic_php5_installed.changed
-  sudo: true
+  become: true
   notify:
     - Restart PHP-FPM
     - Restart Apache HTTP server
