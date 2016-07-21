@@ -14,5 +14,5 @@ galaxy_info:
   - system
   - web
 dependencies:
-  - sivel.newrelic
+  - ansible-role-newrelic
 
