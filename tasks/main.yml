@@ -30,7 +30,7 @@
 - name: Check for PHP-FPM
   command: "apachectl -M"
   changed_when: false
-  always_run: true
+  check_mode: no
   register: _apache_modules
   become: true
 
