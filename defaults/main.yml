@@ -7,3 +7,5 @@ newrelic_appname: "{{ ansible_hostname }} PHP"
 
 php_fpm_loaded: false
 
+php_version: 7
+

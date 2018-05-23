@@ -14,17 +14,17 @@
 
 - name: set config folder according to php version
   set_fact:
-     php_config_path: '/etc/php/7.0'
-  when: php_version == '7'
+    php_config_path: '/etc/php/7.0'
+  when: php_version == 7
 
 - name: set config folder according to php version
   set_fact:
-     php_config_path: '/etc/php5'
-  when: php_version == '5'
+    php_config_path: '/etc/php5'
+  when: php_version == 5
 
 - name: Remove default New Relic configuration
   file:
-    name: {{ php_config_path }}/{{ item }}/conf.d/newrelic.ini
+    name: "{{ php_config_path }}/{{ item }}/conf.d/newrelic.ini"
     state: absent
   with_items:
     - apache2
@@ -35,7 +35,7 @@
 - name: Configure Relic PHP Agent
   template:
     src: newrelic.ini.j2
-    dest: {{ php_config_path }}/mods-available/newrelic.ini
+    dest: "{{ php_config_path }}/mods-available/newrelic.ini"
     group: root
     owner: root
     mode: 0640
@@ -45,7 +45,7 @@
     - Restart Apache HTTP server
 
 - name: Enable the New Relic extension
-  shell: php5enmod -s ALL newrelic creates={{ php_config_path }}/cli/conf.d/20-newrelic.ini
+  shell: php5enmod -s ALL newrelic creates="{{ php_config_path }}/cli/conf.d/20-newrelic.ini"
   when: newrelic_php5_installed.changed
   become: true
   notify:
