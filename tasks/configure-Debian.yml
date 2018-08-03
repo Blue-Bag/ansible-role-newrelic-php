@@ -14,8 +14,8 @@
 
 - name: set config folder according to php version
   set_fact:
-    php_config_path: '/etc/php/7.0'
-  when: php_version == 7
+    php_config_path: '/etc/php/{{ php_version }}'
+  when: php_version >= 7
 
 - name: set config folder according to php version
   set_fact:
