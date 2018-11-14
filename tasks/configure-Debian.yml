@@ -49,5 +49,5 @@
   when: newrelic_php5_installed.changed
   become: true
   notify:
-    - Restart PHP-FPM
+#    - Restart PHP-FPM
     - Restart Apache HTTP server
