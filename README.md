@@ -18,7 +18,7 @@ List of newrelic IPs: https://docs.newrelic.com/docs/apm/new-relic-apm/getting-s
 54.248.250.232	AP Northeast 1	Japan
 54.251.34.67	AP Southeast 1	Singapore
 184.73.237.85	US East 1	Virginia
-The following IP addresses are currently reserved for future availability monitoring use. Whitelist them for forward compatibility.
+The following IP addresses are currently reserved for future availability monitoring use. ACL list them for forward compatibility.
 IP address	Region name	Location
 50.16.189.130	US East 1	Virgina
 50.18.57.7	US West 1	California
@@ -55,4 +55,3 @@ License
 -------
 
 MIT
-
