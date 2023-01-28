@@ -39,7 +39,7 @@
      php_fpm_loaded: true
   when: _apache_modules.stdout.find('php5-fpm') != -1
 
-- include: configure-Debian.yml
+- include_tasks: configure-Debian.yml
   when: ansible_os_family == 'Debian'
   tags: [newrelic-php]
 
